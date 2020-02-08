@@ -1,2 +1,13 @@
 <app-header></app-header>
-<app-data></app-data>
+<!-- List of datas -->
+
+<div class="stocks">
+<ul *ngFor="let stock of portfolio">
+  <app-data [name]="stock.name" [symbol]="stock.symbol" [price]="stock.price" [extra]="stock.extra"
+    [score]="stock.score"></app-data>
+  <br>
+</ul>
+</div>
+
+
+

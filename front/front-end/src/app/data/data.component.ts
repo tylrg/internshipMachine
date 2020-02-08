@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-data',
@@ -8,6 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class DataComponent implements OnInit {
 
   constructor() { }
+  @Input()
+  name: string = "";
+  @Input()
+  symbol: string = "";
+  @Input()
+  score: string = "";
+  @Input()
+  price: string = "";
+  @Input()
+  extra: string = "";
 
   ngOnInit() {
   }
