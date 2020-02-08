@@ -44,4 +44,8 @@ export class HeaderComponent implements OnInit {
     console.clear();
   }
 
+  add(){
+    console.log("adding");
+  }
+
 }
