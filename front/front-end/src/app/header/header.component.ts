@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+
+
 
 @Component({
   selector: 'app-header',
@@ -7,23 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public data: DataService) { }
 
   ngOnInit() {
     console.log("Header has been created");
   }
 
+  //refreshes the stock data
   refresh(){ 
-    console.log("refreshing");
+    console.log("Refreshing");
   }
 
-
+  //opens a help prompt
   help(){
-    console.log("helping");
+    console.log("Helping");
   }
 
+  //signs the user out
   exit(){
-    console.log("exiting");
+    console.log("Exiting");
+  }
+
+  //tests the html connection with a given api
+  test(){
+    console.log("Testing");
+    this.data.test().subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  //clears the console
+  clear(){
+    console.clear();
   }
 
 }
