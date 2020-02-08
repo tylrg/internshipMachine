@@ -10,6 +10,20 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("Header has been created");
+  }
+
+  refresh(){ 
+    console.log("refreshing");
+  }
+
+
+  help(){
+    console.log("helping");
+  }
+
+  exit(){
+    console.log("exiting");
   }
 
 }

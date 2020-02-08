@@ -4,9 +4,9 @@
     <mat-toolbar-row>
       <span>My Portfolio</span>
       <span class="example-spacer"></span>
-      <i  class="example-icon" class="material-icons">autorenew</i>
-      <i  class="example-icon"class="material-icons">help</i>
-      <i  class="example-icon" class="material-icons">exit_to_app</i>
+      <i  id = "refresh-button" class="example-icon" class="material-icons" (click) = "refresh()">autorenew</i>
+      <i id = "help-button" class="example-icon"class="material-icons" (click) = "help()" >help</i>
+      <i  id = "exit-button" class="example-icon" class="material-icons" (click) = "exit()" >exit_to_app</i>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
