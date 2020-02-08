@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     console.log("Helping");
   }
 
-  //signs the user out
+  //signs the user out 
   exit(){
     console.log("Exiting");
   }
