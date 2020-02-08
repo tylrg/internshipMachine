@@ -14,4 +14,11 @@ export class DataService {
   test(){
     return this.http.get(this.baseUrl+'/posts');
   }
+
+  getSentiment(){
+    return this.http.get(this.baseUrl + '/posts');
+  }
+  getPrice(){
+    return this.http.get(this.baseUrl + '/posts');
+  }
 }

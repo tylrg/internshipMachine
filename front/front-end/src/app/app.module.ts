@@ -9,15 +9,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import { HeaderComponent } from './header/header.component';
 import { DataComponent } from './data/data.component';
 import { MatInputModule } from '@angular/material/input';
+import { MasterComponent } from './master/master.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    DataComponent
+    DataComponent,
+    MasterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+<div class="header">
+  <div class="logo" (click)="clear()">NAME OF APP</div>
+  <mat-toolbar>
+    <br>
+    <mat-toolbar-row>
+      <!-- <mat-form-field>
+        <mat-label>Stock Symbol</mat-label>
+        <input id="addField" matInput placeholder="Ex. CITI" [(ngModel)]="name">
+      </mat-form-field> -->
+      <input id="addName" matInput placeholder="Citi Bank">
+      <input id="addField" matInput placeholder="Ex. CITI">
+      <i id="add-button" class="example-icon" class="material-icons" (click)="add()">add</i>
+      <span class="example-spacer"></span>
+      <i id="test-button" class="example-icon" class="material-icons" (click)="test()">done</i>
+      <i id="refresh-button" class="example-icon" class="material-icons" (click)="refresh()">autorenew</i>
+      <!-- <i id="help-button" class="example-icon" class="material-icons" (click)="help()">help</i>
+      <i id="exit-button" class="example-icon" class="material-icons" (click)="exit()">exit_to_app</i> -->
+    </mat-toolbar-row>
+    <br>
+  </mat-toolbar>
+</div>
+<br><br>
+
+
+<!-- data -->
+<div class="stocks">
+  <ul *ngFor="let stock of portfolio">
+    <app-data [name]="stock.name" [symbol]="stock.symbol" [price]="stock.price" [extra]="stock.extra"
+      [score]="stock.score"></app-data>
+    <br>
+  </ul>
+</div>
