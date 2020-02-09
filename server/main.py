@@ -10,16 +10,6 @@ import numpy as np
 app = Flask(__name__)
 api = Api(app)
 
-class HelloWorld(Resource):
-    def get(self):
-        value = returnPrice("AAPL")
-        return {'hello': value }
-
-api.add_resource(HelloWorld, '/')
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
 
 def returnPrice(symbol):
     stock = yf.Ticker(symbol)
@@ -33,3 +23,16 @@ def returnPrice(symbol):
     value = round(value)
     print(value)
     return value
+
+class HelloWorld(Resource):
+    def get(self):
+        value = returnPrice("AAPL")
+        return {'hello': value }
+
+api.add_resource(HelloWorld, '/')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
