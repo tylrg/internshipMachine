@@ -11,12 +11,12 @@ export class MasterComponent implements OnInit {
   constructor(public data:DataService) { }
 
   ngOnInit() {
-    console.log("VERSION 0.0.9");
+    console.log("VERSION 1.0.0");
   }
 
   portfolio = [
-    { "name": "Capital One", "symbol": "COF", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
-    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" }
+    { "name": "Facebook", "symbol": "FB", "price": "0.0", "score": "0.0", "extra": "0.0%", "sentimentAvg": "0.0", "magnitude": "0.0" },
+    { "name": "Apple", "symbol": "AAPL", "price": "0.0", "score": "0.0", "extra": "0.0%", "sentimentAvg": "0.0", "magnitude": "0.0" }
     // { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
     // { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
   ]; 
@@ -27,8 +27,6 @@ export class MasterComponent implements OnInit {
     this.updatePrices();
     this.updateSentiment();
     this.calculateMetric();
-
-
   }
 
   //opens a help prompt
@@ -69,8 +67,11 @@ export class MasterComponent implements OnInit {
           denominator=2;
         }
       }
-      let value = (numerator/denominator);
-      stock.score=value.toString();
+      let val = (numerator/denominator)*100;
+      let rounded = val.toFixed(2);
+
+      stock.score=rounded.toString();
+      
       //console.log(JSON.stringify(stock.score));
     }
   }
@@ -105,11 +106,12 @@ export class MasterComponent implements OnInit {
         console.log(res);
         let jString = JSON.stringify(res);
         let result = JSON.parse(jString);
-        let sentimentString=result.value;
-        let space = sentimentString.indexOf(' ');
-        console.log(space);
-        let magnitude = sentimentString.substring(space+1);
-        sentimentString = sentimentString.substring(0,space);
+        let sentimentString=result.sentiment;
+        //let space = sentimentString.indexOf(' ');
+        //console.log(space);
+        //let magnitude = sentimentString.substring(space+1);
+        let magnitude=result.magnitude;
+        //sentimentString = sentimentString.substring(0,space);
         console.log("Sentiment: " + sentimentString +" Magnitude:" + magnitude);
         stock.sentimentAvg = sentimentString;
         stock.magnitude = magnitude;
