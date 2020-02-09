@@ -20,8 +20,8 @@ export class DataService {
     return this.http.get(this.baseUrl);
   }
 
-  getSentiment(){
-    return this.http.get(this.baseUrl + '/posts');
+  getSentiment(value,name){
+    return this.http.get(this.baseUrl + '/sentiment?symbol='+value+'&name='+name);
   }
   getPercent(value){
     return this.http.get(this.baseUrl + '/percent?symbol='+value);
