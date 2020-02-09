@@ -11,13 +11,13 @@ export class MasterComponent implements OnInit {
   constructor(public data:DataService) { }
 
   ngOnInit() {
-    console.log("VERSION 0.0.6");
+    console.log("VERSION 0.0.7");
   }
 
   portfolio = [
-    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "7.8", "extra": "0.0" },
-    { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "7.8", "extra": "0.0" },
-    { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "7.8", "extra": "0.0" },
+    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "0.0", "extra": "0.0" },
+    { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "0.0", "extra": "0.0" },
+    { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "0.0", "extra": "0.0" },
   ]; 
 
   //refreshes the stock data
@@ -39,14 +39,6 @@ export class MasterComponent implements OnInit {
   //signs the user out 
   exit() {
     console.log("Exiting");
-  }
-
-  //tests the html connection with a given api
-  test() {
-    console.log("Testing");
-    this.data.test().subscribe(res => {
-      console.log(res);
-    });
   }
 
   //clears the console
