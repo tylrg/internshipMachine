@@ -20,19 +20,16 @@ def returnPrice(symbol):
     y = new.iloc[3]
     z = old.iloc[3]
     value = ((y-z)/y)*100
-    value = round(value)
+    value = round(value, 2)
     print(value)
     return value
 
 class HelloWorld(Resource):
     def get(self):
-        value = returnPrice("AAPL")
+        value = returnPrice("XOM")
         return {'hello': value }
 
 api.add_resource(HelloWorld, '/')
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
