@@ -1,5 +1,6 @@
 import requests
 import article
+import calculate
 from bs4 import BeautifulSoup
 
 def seekingalpha(comp_n, comp_t):
@@ -53,8 +54,19 @@ def seekingalpha(comp_n, comp_t):
             new_article = article.Article(title_elem.text.strip(), URL, body_builder.strip())
             articleList.append(new_article)
     
+    seekingalpha_ssTotal = 0
+    seekingalpha_magTotal = 0
+    length = 0.0
     for rev_article in articleList:
-        print(rev_article, end='\n')
-        print()
-
-seekingalpha('Facebook', 'FB')
+        length+=1.0
+        ss_mag = calculate.calculate(rev_article.body)
+        
+        ss = ss_mag[0:ss_mag.index(' ')]
+        mag = ss_mag[ss_mag.index(' ')+1]
+        
+        rev_article.setSentimentScore(float(ss))
+        seekingalpha_ssTotal+=float(ss)
+        rev_article.setMagnitude(float(mag))
+        seekingalpha_magTotal+=float(mag)
+    
+    return str(seekingalpha_ssTotal/length) + ' ' + str(seekingalpha_magTotal/length)

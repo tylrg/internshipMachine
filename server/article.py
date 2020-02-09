@@ -6,7 +6,7 @@ class Article:
         self.title = title
         self.url = url
         self.body = body
-
+        
     def setSentimentScore(self, ss):
         self.sentimentScore = ss
 
@@ -14,4 +14,4 @@ class Article:
         self.magnitude = m
 
     def __str__(self):
-        return self.title + '\n' + self.url + '\n' + self.body
+        return self.title + '\n' + self.url + '\n' + self.body + '\nSentiment Score: ' + str(self.sentimentScore) + '\nMagnitude: ' + str(self.magnitude) + '\n'

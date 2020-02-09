@@ -6,6 +6,9 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 
+import seekingalpha
+import marketwatch
+
 parser=reqparse.RequestParser()
 parser.add_argument('symbol')
 parser.add_argument('name')
@@ -66,11 +69,22 @@ class Sentiment(Resource):
     def get(self):
         symbol=request.args.get('symbol')
         name=request.args.get('name')
-        #value = sentiment method
+        #value = call to the sentiment method
+        seekingRetVal = seekingalpha.seekingalpha(name, symbol)
+        marketRetVal = marketwatch.marketwatch(name, symbol)
+        
+        seekingSSAvg = seekingRetVal[0:seekingRetVal.index(' ')]
+        marketSSAvg = marketRetVal[0:marketRetVal.index(' ')]
+        seekingMagAvg = seekingRetVal[seekingRetVal.index(' ')+1]
+        marketMagAvg = marketRetVal[marketRetVal.index(' ')+1]
+        
+        totalAvgSS = (float(seekingSSAvg) + float(marketSSAvg)) / 2.0
+        totalAvgMag = (float(seekingMagAvg) + float(marketMagAvg)) / 2.0
+        
         return{
             "symbol": symbol,
-            "sentiment": "-69",
-            "magnitude": "420"
+            "sentiment": totalAvgSS,
+            "magnitude": totalAvgMag
         }
 api.add_resource(Sentiment,'/sentiment')
 api.add_resource(Percent, '/percent')
