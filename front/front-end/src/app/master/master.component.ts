@@ -22,12 +22,11 @@ export class MasterComponent implements OnInit {
   //refreshes the stock data
   refresh() {
     console.log("Refreshing");
+    this.updatePrices();
+    this.calculateMetric();
     this.data.getSentiment().subscribe(res => {
       console.log(res);
     });
-    this.data.getSentiment().subscribe(res => {
-      console.log(res);
-    });  
   }
 
   //opens a help prompt
@@ -55,8 +54,23 @@ export class MasterComponent implements OnInit {
 
   add() {
     let addSymbol = (<HTMLInputElement>document.getElementById("addField")).value;
-    console.log("adding "+addSymbol);
-    this.portfolio.push({ "name": "unknown", "symbol": addSymbol, "price": "0.00", "score": "0.0", "extra": "0.0%" });
+    let addName = (<HTMLInputElement>document.getElementById("addName")).value;
+    console.log("adding "+addSymbol+" ");
+    this.portfolio.push({ "name": addName, "symbol": addSymbol, "price": "0.00", "score": "0.0", "extra": "0.0%" });
   }
 
+  calculateMetric(){
+
+    for(let stock of this.portfolio){
+      console.log(JSON.stringify(stock.score));
+    }
+  }
+
+  updatePrices(){
+    for (let stock of this.portfolio) {
+      console.log(JSON.stringify(stock.score));
+      //call stock api
+      //set stock price to value
+    }
+  }
 }

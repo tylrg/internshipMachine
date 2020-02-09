@@ -1,13 +1,14 @@
 <div class="header">
   <div class="logo" (click)="clear()">NAME OF APP</div>
   <mat-toolbar>
-    <br>
+    <mat-toolbar-row>
+      <input id="addName" matInput placeholder="Citi Bank">
+    </mat-toolbar-row>
     <mat-toolbar-row>
       <!-- <mat-form-field>
         <mat-label>Stock Symbol</mat-label>
         <input id="addField" matInput placeholder="Ex. CITI" [(ngModel)]="name">
       </mat-form-field> -->
-      <input id="addName" matInput placeholder="Citi Bank">
       <input id="addField" matInput placeholder="Ex. CITI">
       <i id="add-button" class="example-icon" class="material-icons" (click)="add()">add</i>
       <span class="example-spacer"></span>
