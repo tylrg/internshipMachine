@@ -8,6 +8,7 @@ import numpy as np
 
 parser=reqparse.RequestParser()
 parser.add_argument('symbol')
+parser.add_argument('name')
 
 app = Flask(__name__)
 api = Api(app)
@@ -25,7 +26,6 @@ def returnPercent(symbol):
     value = round(value, 2)
     print(value)
     return value
-
 def returnPrice(symbol):
     stock = yf.Ticker(symbol)
     h = stock.history(period="5d")
@@ -38,6 +38,7 @@ def returnPrice(symbol):
     value = round(y, 2)
     #print(value)
     return value
+#sentiment
 
 class Percent(Resource):
     def get(self):
@@ -61,9 +62,18 @@ class Price(Resource):
             "value":value
         }
 
+class Sentiment(Resource):
+    def get(self):
+        symbol=request.args.get('symbol')
+        name=request.args.get('name')
+        #value = sentiment method
+        return{
+            "symbol": symbol,
+            "sentiment": "-69",
+            "magnitude": "420"
+        }
+api.add_resource(Sentiment,'/sentiment')
 api.add_resource(Percent, '/percent')
 api.add_resource(Price, '/price')
-
-
 if __name__ == '__main__':
     app.run(debug=True)
