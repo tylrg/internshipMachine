@@ -11,20 +11,20 @@ export class MasterComponent implements OnInit {
   constructor(public data:DataService) { }
 
   ngOnInit() {
-    console.log("VERSION 0.0.7");
+    console.log("VERSION 0.0.8");
   }
 
   portfolio = [
-    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "0.0", "extra": "0.0" },
-    { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "0.0", "extra": "0.0" },
-    { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "0.0", "extra": "0.0" },
+    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
+    { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
+    { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
   ]; 
 
   //refreshes the stock data
   refresh() {
     console.log("Refreshing");
     this.updatePrices();
-    //this.calculateMetric();
+    this.calculateMetric();
 
     // this.data.getSentiment().subscribe(res => {
     //   console.log(res);
@@ -50,12 +50,29 @@ export class MasterComponent implements OnInit {
     let addSymbol = (<HTMLInputElement>document.getElementById("addField")).value;
     let addName = (<HTMLInputElement>document.getElementById("addName")).value;
     console.log("adding "+addSymbol+" ");
-    this.portfolio.push({ "name": addName, "symbol": addSymbol, "price": "0.00", "score": "0.0", "extra": "0.0%" });
+    this.portfolio.push({ "name": addName, "symbol": addSymbol, "price": "0.00", "score": "0.0", "extra": "0.0%","sentimentAvg":"0.0","magnitude":"0.0" });
   }
 
   calculateMetric(){
 
     for(let stock of this.portfolio){
+      let sA = +(stock.sentimentAvg);
+      let mA = +(stock.magnitude);
+      let trend = +(stock.extra);
+      let numerator = sA*mA;
+      let denominator = 1;
+      if(numerator<0){
+        if(trend>=0){
+          denominator=2;
+        }
+      }
+      if(numerator>=0){
+        if(trend<0){
+          denominator=2;
+        }
+      }
+      let value = (numerator/denominator);
+      stock.score=value.toString();
       console.log(JSON.stringify(stock.score));
     }
   }
