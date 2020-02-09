@@ -15,9 +15,9 @@ export class MasterComponent implements OnInit {
   }
 
   portfolio = [
-    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "7.8", "extra": "-43.%" },
-    { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "7.8", "extra": "-43.%" },
-    { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "7.8", "extra": "-43.%" },
+    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "7.8", "extra": "0.0" },
+    { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "7.8", "extra": "0.0" },
+    { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "7.8", "extra": "0.0" },
   ]; 
 
   //refreshes the stock data
