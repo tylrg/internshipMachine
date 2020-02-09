@@ -3,6 +3,8 @@ import article
 from bs4 import BeautifulSoup
 
 def marketwatch(comp_n, comp_t):
+    articleList = []
+    
     URL = 'https://www.marketwatch.com/trading-deck/stories'
     page = requests.get(URL)
 
@@ -50,5 +52,10 @@ def marketwatch(comp_n, comp_t):
                 body_builder += para_elem.text.strip() + ' '
             body_builder = ' '.join(body_builder.split())
             new_article = article.Article(title_elem.text.strip(), URL, body_builder.strip())
-            print(new_article, end='\n')
-            print('\n'*2)
+            articleList.append(new_article)
+    
+    for rev_article in articleList:
+        print(rev_article, end='\n')
+        print()
+
+marketwatch('Facebook', 'FB')

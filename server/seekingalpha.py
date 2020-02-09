@@ -3,6 +3,8 @@ import article
 from bs4 import BeautifulSoup
 
 def seekingalpha(comp_n, comp_t):
+    articleList = []
+    
     URL = 'https://seekingalpha.com/market-news'
     page = requests.get(URL)
 
@@ -49,5 +51,10 @@ def seekingalpha(comp_n, comp_t):
                     continue    
                 body_builder += bullet_elem.text.strip() + ' ' 
             new_article = article.Article(title_elem.text.strip(), URL, body_builder.strip())
-            print(new_article, end='\n')
-            print()
+            articleList.append(new_article)
+    
+    for rev_article in articleList:
+        print(rev_article, end='\n')
+        print()
+
+seekingalpha('Facebook', 'FB')
