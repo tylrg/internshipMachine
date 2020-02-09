@@ -69,5 +69,7 @@ def marketwatch(comp_n, comp_t):
         marketwatch_ssTotal+=float(ss)
         rev_article.setMagnitude(float(mag))
         marketwatch_magTotal+=float(mag)
-    
-    return str(marketwatch_ssTotal/length) + ' ' + str(marketwatch_magTotal/length)
+    if length == 0.0: 
+        return '0.0 0.0'
+    else:
+        return str(marketwatch_ssTotal/length) + ' ' + str(marketwatch_magTotal/length)

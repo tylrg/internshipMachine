@@ -68,5 +68,7 @@ def seekingalpha(comp_n, comp_t):
         seekingalpha_ssTotal+=float(ss)
         rev_article.setMagnitude(float(mag))
         seekingalpha_magTotal+=float(mag)
-    
-    return str(seekingalpha_ssTotal/length) + ' ' + str(seekingalpha_magTotal/length)
+    if length == 0.0: 
+        return '0.0 0.0'
+    else:   
+        return str(seekingalpha_ssTotal/length) + ' ' + str(seekingalpha_magTotal/length)
