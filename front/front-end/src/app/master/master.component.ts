@@ -15,16 +15,17 @@ export class MasterComponent implements OnInit {
   }
 
   portfolio = [
-    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
-    { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
-    { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
+    { "name": "Capital One", "symbol": "COF", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
+    { "name": "Nike", "symbol": "NKE", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" }
+    // { "name": "Microsoft", "symbol": "MSFT", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
+    // { "name": "Google", "symbol": "GOOG", "price": "0.0", "score": "0.0", "extra": "0.0", "sentimentAvg": "0.0", "magnitude": "0.0" },
   ]; 
 
   //refreshes the stock data
   refresh() {
     console.log("Refreshing");
     this.updatePrices();
-    this.
+    this.updateSentiment();
     this.calculateMetric();
 
 
@@ -107,7 +108,7 @@ export class MasterComponent implements OnInit {
         let sentimentString=result.value;
         let space = sentimentString.indexOf(' ');
         console.log(space);
-        let magnitude = sentimentString.substring(space);
+        let magnitude = sentimentString.substring(space+1);
         sentimentString = sentimentString.substring(0,space);
         console.log("Sentiment: " + sentimentString +" Magnitude:" + magnitude);
         stock.sentimentAvg = sentimentString;
